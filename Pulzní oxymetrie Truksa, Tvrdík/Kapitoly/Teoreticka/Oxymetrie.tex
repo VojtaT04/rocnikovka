@@ -11,7 +11,7 @@ Pulzní oxymetrie je neinvazivní optická technika měření saturace kyslíku 
 \par Pulzní oxymetrie však v současnosti není již specializovanou metodou pro vojenské či zdravotnické účely, ale je používána i v zařízeních určených běžným uživatelům, a to nejen samostatně, ale i jakožto součást komplexnějších produktů. Oproti původnímu Millikanovu oxymetru navíc používáme přesnějších zdrojů světla, LED světlech o specifických vlnových délkách. Zároveň se dá měřit i na jiných částech těla, než je ucho - běžně dostupné oxymetry nejčastěji měří na prstu, existují však i varianty měřící na zápěstí.
 \subsection {Princip fungování}
 Srdce člověka, jak je obecně známo, funguje v cyklech. Pro krev v tepnách to znamená, že ve chvíli, kdy srdce vypuzuje krev, se zvýší její objem díky elasticitě tepen. Zvýšení tohoto objemu logicky vede k nižší propustnosti světla, díky čemuž mají pulzní oxymetry schopnost měřit srdeční tep.
-\par Samotné měření saturace kyslíku v krvi pak probíhá na principu Lambertova-Beerova zákona, který popisuje pohlcováni elektromagnetické záření. Aplikace tohoto zákona je popsána v následujících rovnicích, které popisuje \cite{KYRIACOU}.
+\subsubsection{Aplikace Lambertova-Beerova zákona} Samotné měření saturace kyslíku v krvi pak probíhá na principu Lambertova-Beerova zákona, který popisuje pohlcováni elektromagnetické záření. Aplikace tohoto zákona je popsána v následujících rovnicích, které popisuje \cite{KYRIACOU}.
 \begin{equation}%když budeš chtít víc rovnic u sebe alignnout, tak je to align místo equation a před alignnutý = dáš &
   {\epsilon_{\lambda}cl} = A_{\lambda} = ln(\frac{I_s}{I_d})  
 \end{equation}\\
@@ -28,6 +28,8 @@ Text3\\
 \begin{equation}
     \frac{AC_{\lambda}}{I_d} = A_{\lambda} = \frac{AC_{\lambda}}{DC_{\lambda}}\end{equation}\\
 Text4\\
+
+\subsubsection{Volba vlnových délek}
  
 %\begin{figure}[H]
 %  \includegraphics[scale=1, center]{Kapitoly/Teoreticka/Obrazky/Absorpce.png}
