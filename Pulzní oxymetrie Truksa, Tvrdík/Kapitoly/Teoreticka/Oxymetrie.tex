@@ -15,22 +15,29 @@ Srdce člověka, jak je obecně známo, funguje v cyklech. Pro krev v tepnách t
 \par Saturace kyslíku je pak udávána vztahem $SpO_2 = \frac{HbO_2}{\text{Hemoglobin celkem}}$, kde $HbO_2$ je oxyhemoglobin. Tento vztah se pro běžné měření oxymetrem, který umí rozlišovat jen mezi dvěma základními formami hemoglobinu, zjednodušuje na $SpO_2 = \frac{HbO_2}{HbO_2+Hb}$, kde $Hb$ je deoxyhemoglobin). Nové pokročilejší přístroje jsou však schopny detekovat i další formy hemoglobinu - karboxyhemoglobin a methemoglobin. Rovnice pro takovéto měření je pak $SpO_2 = \frac{HbO_2}{HbO_2+Hb+HbCO+HbMet}$, kde $HbCO$ je karboxyhemoglobin a $HbMet$ je methemoglobin. 
 \subsubsection{Aplikace Lambertova-Beerova zákona} Samotné měření saturace kyslíku v krvi pak probíhá na principu Lambertova-Beerova zákona, který popisuje pohlcováni elektromagnetické záření. Aplikace tohoto zákona je popsána v následujících rovnicích, které popisuje \cite{KYRIACOU}.
 \begin{equation}%když budeš chtít víc rovnic u sebe alignnout, tak je to align místo equation a před alignnutý = dáš &
-  {\epsilon_{\lambda}cl} = A_{\lambda} = ln(\frac{I_s}{I_d})  
+  {\epsilon_{\lambda}cl} = A_{\lambda} = ln(T) = ln(\frac{I_s}{I_d})
+  \label{EQ:Lambertův–Beerův zákon}
 \end{equation}\\
-Text1\\
+Zákon říká, že když vynásobíme molární absorpci při dané vlnové délce ($\epsilon_{\lambda}$), koncentraci absorpční složky ($c$) a dráhu kterou musí světlo přes danou látku vzít ($l$), tak nám vyjde absorbance pro světlo dané vlnové délky ($A_{\lambda}$). Pokud absorbanci zlogaritmujeme, tak získáme transmitanci ($T$). Transmitanci také můžeme vyjádřit jako poměr mezi intenzitou světla které látkou projde při diastole a intenzitou světla které látkou projde při systole ($\frac{I_s}{I_d}$). Tím nám vzniká vztah z rovnice \ref{EQ:Lambertův–Beerův zákon}.\\
 \begin{equation}
     A_{\lambda} = ln(\frac{I_d+AC_{\lambda}}{I_d})
     \label{EQ:ZAKLAD}
 \end{equation}\\
-Text2, příklad reference na rovnici \ref{EQ:ZAKLAD}.\\
+Vzhledem k tomu, že jediná často se měnící vlastnost námi sledované látky, v tomto případě prstu, je kolik a jaké krve v ní zrovna je, tak můžeme rozdíl mezi již zmíněnými intenzitami světla při různých stavech oběhového systému označit jako celou střídavou složku ($AC_{\lambda}$). To znamená že, při dané vlnové délce: $AC_{\lambda} = I_d - I_s$. Díky tomu můžeme dospět k rovnici \ref{EQ:ZAKLAD}.\\
 \begin{equation}
-    A_{\lambda} = ln(1+\frac{AC_{\lambda}}{I_d}) \simeq \frac{AC_{\lambda}}{I_d}
+    A_{\lambda} = ln(\frac{I_d+AC_{\lambda}}{I_d}) = ln(1+\frac{AC_{\lambda}}{I_d}) \simeq \frac{AC_{\lambda}}{I_d}
 \end{equation}\\
 Text3\\
 \begin{equation}
-    \frac{AC_{\lambda}}{I_d} = A_{\lambda} = \frac{AC_{\lambda}}{DC_{\lambda}}
+    A_{\lambda} = \frac{AC_{\lambda}}{I_d} = \frac{AC_{\lambda}}{DC_{\lambda}}
+    \label{EQ:DC}
 \end{equation}\\
-Text4\\
+Dalším důležitým faktem je, že samotná střídavá složka ($AC_{\lambda}$) je většinou jen 1 \%-2 \% celkové intenzity světla. Díky tomu můžeme rozdíl mezi průměrnou intenzitou světla, co prstem prošlo (stálá složka - $DC_{\lambda}$) a již zmíněnými intenzitami světla při různých stavech oběhového systému ($I_s$ a $I_d$) označit za zanedbatelný. Toho také využijeme v rovnici \ref{EQ:DC}.\\
+\begin{equation}
+    R = \frac{A_{\lambda1}}{A_{\lambda2}} = \frac{\frac{(AC_{\lambda1}}{DC_{\lambda1}})}{(\frac{AC_{\lambda2}}{DC_{\lambda2}})}
+    \label{EQ:poměr absorbancí}
+\end{equation}\\
+Poměr absorbancí při dvou vhodných vlnových délkách (jak ukazuje rovnice \ref{EQ:poměr absorbancí}) a empiricky získaná kalibrační křivka se používají pro vypočítání saturace kyslíku v krvi ($SpO_2$).\\
 
 \subsubsection{Volba vlnových délek}
  
