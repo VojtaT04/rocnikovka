@@ -1,0 +1,28 @@
+\section{Kód pro získání naměřených dat z oxymetru}
+\label{appn:Python}
+\begin{lstlisting}
+def main():
+    import serial
+    f = open("oxymeterOutput.csv", "a")
+    a = input("Zadejte cislo portu, na nemz je oxymter pripojen: ")
+    portNr = f'COM{int(a)}'
+    br = 115200
+    to = 30
+    try:
+        pico = serial.Serial(port=portNr, baudrate=br, timeout=to)
+    except:
+        print (f"S oxymetrem se nepovedlo spojit na portu {a}")
+
+    pico.write(bytes("D", 'utf-8'))
+    while True:
+        try:
+            ser_bytes = pico.readline()
+            f.write(str(ser_bytes) + "\n")
+        except KeyboardInterrupt:
+            f.close()
+            print("Keyboard Interrupt")
+            break
+    f.close()
+if __name__ == "__main__":
+    main()
+\end{lstlisting}
