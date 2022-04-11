@@ -1,0 +1,25 @@
+\section{Příručka pro stavbu vlastního oxymetru}
+\label{appn:Guide}
+Cílem této příručky je předat důležité informace komukoliv, kdo by se rozhodl si náš oxymetr postavit sám. Pro úspěšnou stavbu se předpokládá, že si člověk dokáže zajistit vytištění potřebných 3D modelů a má dostatečné znalosti a zkušenosti, aby mohl provést stavbu bezpečně.
+\par Seznam potřebných součástek:
+\begin{itemize}
+  \item Raspberry Pi Pico
+  \item Vytištěné 3D modely (viz jednotlivé .stl soubory)
+  \item Oxymetr - například RCWL-0530, nebo jiný velikostně kompatibilní 
+  \item 0.91" 128 x 32 OLED displej se sběrnicí $I^2C$
+  \item GeB LiPol Baterie 603048 900 mAh 3.7 V JST-PH
+  \item Nabíječka na Li-ion články - například TP4056
+  \item JST-PH 2 mm 2 piny konektor
+  \item PCB prototypová deska (ideálně oboustranná) o velikosti alespoň 17 x 9 děr
+  \item 2x JST-XH 2.54mm 7 pinů konektor na DPS pravý úhel
+  \item JST-XH 2.54mm 7 pinů vodič se samičím konektorem
+  \item 3x mikrospínač tlačítko (ideálně 6 x 6 x 10 mm, stačí ale i 6 x 6 x 6 mm)
+  \item izolované dráty nebo kabely pro propojování různých součástek
+  \item kus molitanu
+\end{itemize}
+\par Dalšími potřebnými nástroji budou samozřejmě potřeby na pájení, tavná pistole a ideálně i kaptonová páska.
+\par Samozřejmě je možné různé z těchto součástek nahradit za jiné, ale v tu chvíli je důležité si dát pozor a upravit i 3D model pro případnou změnu velikosti. V případě změny zdroje energie je důležité také zajistit potřebnou ochranu. Dále je třeba si zkontrolovat velikost PCB okolo displeje, naše má rozměry 38,2 x 12,15 mm a na to je dělaný přiložený 3D model, ale existují i displeje s větším PCB, pro jejichž použití by bylo nutné upravit 3D model.
+\par Pokud máte všechny součástky připravené, je konečně čas se pustit do stavby. Celou stavbu budeme dělat podle schématu celého obvodu (obrázek \ref{fig:Diagram}). Začneme horním PCB majícím na sobě displej a tlačítka. PCB prototypovou desku nařežeme tak, aby nám zbyla 46 x 25,6 mm velká část s mřížkou o rozměru 17 x 9 děr. Poté na ni můžeme začít pájet komponenty. Položení komponentů je jasné z 3D tištěného vrchního dílu, který má na konektory, tlačítka i displej jasně určené díry. Na spodní straně PCB bychom se měli vyvarovat vyčnívajícím věcem, které by mohly zabránit správnému spojení horního a spodního dílu této části oxymetru. Proto je vhodné zkrátit jakékoli piny které by moc vyčnívaly. Horní stranu zato můžeme použít pro kabílky přeskakující jiné části obvodu a případně pullupové rezistory pro dvě z tlačítek, které je sem možno jednoduše schovat. Po připájení všech součástek již stačí PCB vložit mezi dvě půlky horní části oxymetru a dané půlky slepit.
+\par Zbytek oxymetru můžeme pájet samostatně mimo samotné 3D tištěné části, ale musíme si dát pozor, protože náš 7 pinový vodič musí být protažen příslušnou dírou v těle oximetru dříve než bude připájen, a to tak, aby samičí konektor nejen vyčníval ven, ale dal se i ohnout a připojit nahoru do horní části oxymetru.
+\par Pokud máme dopájeno, můžeme začít vkládat elektroniku do samotného těla oxymetru. První na řadě je oxymetr samotný, který se prostrčí z vnitřku těla oxymetru ven na své místo do měřící komory. Tam je ho nejlepší správně narovnat a ze spodu přilepit tavnou pistolí. Dále dovnitř vsuneme samotné Pi Pico tak, aby jeho USB konektor zapadl do jemu příslušné díry, a Pico bylo zabezpečené i zezadu stěnou, jež je tam pro tento účel připravena. Poté již jen stačí umístit zbytek elektroniky. V tuto chvíli je třeba dávat si pozor na potenciální zkraty, kterým může zabránit například kaptonová páska. Teď již stačí jen vše zkontrolovat, připojit akumulátor a zasunout spodní dvířka.
+Z hlediska softwaru je třeba stáhnout Arduino IDE, v Tools > Board: > Boards manager… nainstalovat Arduino Mbed OS RP2040 Boards (verzi 2.7.2 nebo novější). Poté v Tools > Manage libraries… stáhnout MAX30100lib (verzi 1.2.1 nebo novější) a U8g2 (verzi 2.21.2 nebo novější). Poté již stačí připojit oxymetr k počítači, otevřít v Arduino IDE zdrojový kód, v Tools > Board: > Arduino Mbed OS RP2040 Boards > Raspberry Pi Pico a v Tools > Port: vybrat ten, který má u sebe Raspberry Pi Pico (ten je také potřeba znát pro případ využití programu pro stažení dat z oxymetru) a kliknout na tlačítko Upload (šipka doprava).
